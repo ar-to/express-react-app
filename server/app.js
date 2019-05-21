@@ -26,13 +26,13 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // Handles any requests that don't match the ones above
 console.log('sss',path.join(__dirname, '../client/build/index.html'))
+app.use(express.static(path.join(__dirname, '../client/build')));
 app.get('/react-app', (req,res) =>{
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });

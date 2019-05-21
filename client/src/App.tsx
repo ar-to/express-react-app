@@ -14,11 +14,10 @@ const App: React.FC = () => {
         <img src={logo} className="App-logo" alt="logo" />
         <a
           className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
+          href="/"
           rel="noopener noreferrer"
         >
-          Learn React
+          Home
         </a>
         <StatefulHello name="World" enthusiasmLevel={0} />
         <Users userId={1} default={0} />
