@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
+var path = require('path');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -25,9 +26,16 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+// Handles any requests that don't match the ones above
+console.log('sss',path.join(__dirname, '../client/build/index.html'))
+app.get('/react-app', (req,res) =>{
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
